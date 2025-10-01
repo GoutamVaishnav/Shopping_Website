@@ -2,8 +2,9 @@ import { ProductsType } from "@/types";
 import React from "react";
 import Categories from "./Categories";
 import ProductCard from "./ProductCard";
+import Link from "next/link";
 
-const ProductList = () => {
+const ProductList = ({ category }: { category: string }) => {
   // TEMPORARY
   const products: ProductsType = [
     {
@@ -125,6 +126,9 @@ const ProductList = () => {
           return <ProductCard key={product.id} product={product} />;
         })}
       </div>
+      <Link href={category ?`/products/?category=${category}` : '/products'} className="mt-10 inline-block text-sm text-gray-600 underline hover:text-gray-800">
+        See All Products
+      </Link>
     </div>
   );
 };
